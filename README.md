@@ -7,10 +7,20 @@ It uses Bash scripting to create dummy backups, log actions, and verify restore 
 
 ## 📂 Project Structure
 
+mongo-backup-practice/
+├── scripts/
+│ ├── backup.sh # Creates timestamped backups and logs each event
+│ └── restore.sh # Restores the most recent backup into verify directory
+├── backups/ # Stores created backup files
+├── verify/ # Holds restored files for verification
+└── logs/
+└── backup.log # Log of all backup and restore actions
+
 
 ---
 
 ## ⚙️ How to Use
+
 ```bash
 # Make scripts executable
 chmod +x scripts/backup.sh scripts/restore.sh
@@ -20,3 +30,5 @@ chmod +x scripts/backup.sh scripts/restore.sh
 
 # Restore the most recent backup
 ./scripts/restore.sh
+
+---
