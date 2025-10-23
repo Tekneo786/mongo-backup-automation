@@ -1,11 +1,12 @@
-# 🧰 Mongo Backup Automation (Bash Project)
+#  Mongo Backup Automation (Bash Project)
 
-This project simulates an automated backup and restore workflow — built as part of my DevOps learning journey.  
+
+This project simulates an automated backup and restore workflow — built as part of my DevOps learning journey.
 It uses Bash scripting to create dummy backups, log actions, and verify restore functionality.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 mongo-backup-practice/
 ├── scripts/
@@ -16,10 +17,13 @@ mongo-backup-practice/
 └── logs/
 └── backup.log # Log of all backup and restore actions
 
+ *Created by Hamid Haider (Tekneo786)*
+ **DevOps Learner | Cloud Enthusiast | Automation Advocate**
+
 
 ---
 
-## ⚙️ How to Use
+## How to Use
 
 ```bash
 # Make scripts executable
@@ -30,5 +34,3 @@ chmod +x scripts/backup.sh scripts/restore.sh
 
 # Restore the most recent backup
 ./scripts/restore.sh
-
----
