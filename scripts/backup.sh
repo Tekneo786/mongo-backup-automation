@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-
 set -e
 
 # ------------------------
-# Logging function (must come first)
+# Logging (defined first)
 # ------------------------
 LOG_DIR="$HOME/mongo-logs"
 mkdir -p "$LOG_DIR"
@@ -17,36 +16,45 @@ log() {
 # ------------------------
 DATE=$(date +"%Y-%m-%d_%H-%M-%S")
 BACKUP_DIR="$HOME/mongo-backups"
+RETENTION_DAYS=7
+
 mkdir -p "$BACKUP_DIR"
 
 # ------------------------
-# Backup
+# MongoDB Backup
 # ------------------------
-BACKUP_FILE="$BACKUP_DIR/mongo_backup_$DATE.txt"
-echo "Backup taken at $DATE" > "$BACKUP_FILE"
-log "Backup created: $BACKUP_FILE"
+BACKUP_PATH="$BACKUP_DIR/mongo_backup_$DATE"
+
+mongodump \
+  --host localhost \
+  --port 27017 \
+  --out "$BACKUP_PATH"
+
+log "MongoDB backup completed at $BACKUP_PATH"
+
 
 # ------------------------
 # Verification
 # ------------------------
-if [ ! -s "$BACKUP_FILE" ]; then
-  log "ERROR: Backup verification failed for $BACKUP_FILE"
+if [ ! -d "$BACKUP_PATH" ] || [ -z "$(ls -A "$BACKUP_PATH")" ]; then
+  log "ERROR: MongoDB backup verification failed at $BACKUP_PATH"
   exit 1
 fi
 
-# ------------------------
-# Retention policy (delete backups older than 7 days)
-# ------------------------
-RETENTION_DAYS=7
+log "MongoDB backup verification passed for $BACKUP_PATH"
 
+
+# ------------------------
+# Retention Policy
+# ------------------------
 find "$BACKUP_DIR" -type f -mtime +$RETENTION_DAYS -print -delete | while read -r file; do
   log "Deleted old backup: $file"
 done
-
-log "Backup verification passed for $BACKUP_FILE"
 
 # ------------------------
 # Completion
 # ------------------------
 echo "Backup completed successfully at $DATE"
+
+
 

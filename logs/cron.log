@@ -1,0 +1,35 @@
+✅ Dummy backup created successfully at 2025-10-24_10-54-50
+✅ Dummy backup created successfully!
+✅ Restored mongo_backup_2025-10-24_10-54-50.txt into ./verify
+✅ Dummy backup created successfully at 2025-10-26_20-00-31
+✅ Dummy backup created successfully!
+cp: cannot create regular file './verify/restore_mongo_backup_2025-10-26_20-00-31.txt': No such file or directory
+✅ Restored mongo_backup_2025-10-26_20-00-31.txt into ./verify
+✅ Dummy backup created successfully at 2025-11-09_20-00-01
+✅ Dummy backup created successfully!
+cp: cannot create regular file './verify/restore_mongo_backup_2025-11-09_20-00-01.txt': No such file or directory
+✅ Restored mongo_backup_2025-11-09_20-00-01.txt into ./verify
+✅ Dummy backup created successfully at 2025-11-19_13-00-01
+✅ Dummy backup created successfully!
+cp: cannot create regular file './verify/restore_mongo_backup_2025-11-19_13-00-01.txt': No such file or directory
+✅ Restored mongo_backup_2025-11-19_13-00-01.txt into ./verify
+✅ Dummy backup created successfully at 2025-11-28_13-00-01
+✅ Dummy backup created successfully!
+cp: cannot create regular file './verify/restore_mongo_backup_2025-11-28_13-00-01.txt': No such file or directory
+✅ Restored mongo_backup_2025-11-28_13-00-01.txt into ./verify
+✅ Dummy backup created successfully at 2025-11-30_20-00-01
+✅ Dummy backup created successfully!
+cp: cannot create regular file './verify/restore_mongo_backup_2025-11-30_20-00-01.txt': No such file or directory
+✅ Restored mongo_backup_2025-11-30_20-00-01.txt into ./verify
+✅ Dummy backup created successfully at 2025-12-02_20-00-00
+✅ Dummy backup created successfully!
+cp: cannot create regular file './verify/restore_mongo_backup_2025-12-02_20-00-00.txt': No such file or directory
+✅ Restored mongo_backup_2025-12-02_20-00-00.txt into ./verify
+✅ Dummy backup created successfully at 2025-12-18_20-12-39
+✅ Dummy backup created successfully!
+cp: cannot create regular file './verify/restore_mongo_backup_2025-12-18_20-12-39.txt': No such file or directory
+✅ Restored mongo_backup_2025-12-18_20-12-39.txt into ./verify
+✅ Dummy backup created successfully at 2025-12-20_20-00-01
+✅ Dummy backup created successfully!
+cp: cannot create regular file './verify/restore_mongo_backup_2025-12-20_20-00-01.txt': No such file or directory
+✅ Restored mongo_backup_2025-12-20_20-00-01.txt into ./verify
