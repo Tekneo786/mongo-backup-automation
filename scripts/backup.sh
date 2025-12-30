@@ -34,6 +34,15 @@ if [ ! -s "$BACKUP_FILE" ]; then
   exit 1
 fi
 
+# ------------------------
+# Retention policy (delete backups older than 7 days)
+# ------------------------
+RETENTION_DAYS=7
+
+find "$BACKUP_DIR" -type f -mtime +$RETENTION_DAYS -print -delete | while read -r file; do
+  log "Deleted old backup: $file"
+done
+
 log "Backup verification passed for $BACKUP_FILE"
 
 # ------------------------
