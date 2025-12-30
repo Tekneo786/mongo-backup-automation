@@ -1,25 +1,43 @@
-#!/bin/bash
-# backup.sh — creates a dummy backup and ensures folders exist
+#!/usr/bin/env bash
 
+set -e
+
+# ------------------------
+# Logging function (must come first)
+# ------------------------
+LOG_DIR="$HOME/mongo-logs"
+mkdir -p "$LOG_DIR"
+
+log() {
+  echo "[$(date)] $1" >> "$LOG_DIR/backup.log"
+}
+
+# ------------------------
+# Variables
+# ------------------------
 DATE=$(date +"%Y-%m-%d_%H-%M-%S")
-BACKUP_DIR="./backups"
-LOG_DIR="./logs"
+BACKUP_DIR="$HOME/mongo-backups"
+mkdir -p "$BACKUP_DIR"
 
-# Ensure required folders exist
-[ ! -d "$BACKUP_DIR" ] && mkdir -p "$BACKUP_DIR"
-[ ! -d "$LOG_DIR" ] && mkdir -p "$LOG_DIR"
+# ------------------------
+# Backup
+# ------------------------
+BACKUP_FILE="$BACKUP_DIR/mongo_backup_$DATE.txt"
+echo "Backup taken at $DATE" > "$BACKUP_FILE"
+log "Backup created: $BACKUP_FILE"
 
-# Create dummy backup
-echo "Backup taken at $DATE" > "$BACKUP_DIR/mongo_backup_$DATE.txt"
+# ------------------------
+# Verification
+# ------------------------
+if [ ! -s "$BACKUP_FILE" ]; then
+  log "ERROR: Backup verification failed for $BACKUP_FILE"
+  exit 1
+fi
 
-# Log the event
-echo "[$(date)] Backup created: mongo_backup_$DATE.txt" >> "$LOG_DIR/backup.log"
+log "Backup verification passed for $BACKUP_FILE"
 
-echo "✅ Dummy backup created successfully at $DATE"
-#!/bin/bash
-DATE=$(date +"%Y-%m-%d_%H-%M-%S")
-BACKUP_DIR="./backups"
-echo "Backup taken at $DATE" > "$BACKUP_DIR/mongo_backup_$DATE.txt"
-echo "[$(date)] Backup created: mongo_backup_$DATE.txt" >> ./logs/backup.log
-echo "✅ Dummy backup created successfully!"
+# ------------------------
+# Completion
+# ------------------------
+echo "Backup completed successfully at $DATE"
 
